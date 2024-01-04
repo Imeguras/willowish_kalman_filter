@@ -1,11 +1,4 @@
-#import json
-#import numpy as np
-#import azure.functions as func
-#from filterpy.kalman import UnscentedKalmanFilter
-#from filterpy.common import Q_discrete_white_noise
-#from filterpy.kalman import JulierSigmaPoints
-#
-#from numpy.random import randn
+
 #
 ## Function to predict the next state
 #def fx(x, dt):
