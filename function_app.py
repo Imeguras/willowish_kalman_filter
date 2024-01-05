@@ -27,9 +27,9 @@ def hx(x):
 
 @app.route(route="http_trigger")
 def http_trigger(req: func.HttpRequest) -> func.HttpResponse:
-  speed = req.params.get('speed')
-  distance = req.params.get('distance')
-  timeTruth = req.params.get('timeTruth')
+  speed = 10#req.params.get('speed')
+  distance = 10#req.params.get('distance')
+  timeTruth = 2#req.params.get('timeTruth')
   
   try:
     #
