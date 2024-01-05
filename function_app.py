@@ -31,6 +31,7 @@ def http_trigger(req: func.HttpRequest) -> func.HttpResponse:
   distance = req.params.get('distance').astype(float)
   timeTruth = req.params.get('timeTruth').astype(float)
   
+  
   try:
     #
     #
@@ -48,7 +49,13 @@ def http_trigger(req: func.HttpRequest) -> func.HttpResponse:
     unscentedF.predict(timeTruth)
     unscentedF.update(distance)
     # return a json containing all the data
-    return func.HttpResponse(json.dumps(unscentedF.x.tolist()))
+    ret = json.dumps(unscentedF.x.tolist())
+    #  add initial params
+    ret.append(speed)
+    ret.append(distance)
+    ret.append(timeTruth)
+
+    return func.HttpResponse(ret)
 
 
   except Exception as e:
