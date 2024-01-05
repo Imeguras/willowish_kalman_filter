@@ -41,15 +41,15 @@ def http_trigger(req: func.HttpRequest) -> func.HttpResponse:
     sigmas = JulierSigmaPoints(n=2, kappa=3)
    
     unscentedF = UnscentedKalmanFilter(dim_x=dim_x, dim_z=dim_z, dt=1., hx=hx, fx=fx, points=sigmas )
-    unscentedF.P *= 5.
-    unscentedF.R *= 2.
+    
     unscentedF.Q = Q_discrete_white_noise(dim=2, dt=1., var=1.)
+    unscentedF.P = np.eye(dim_x) * 1.0
     unscentedF.R = np.array([[0.1]])  # Measurement noise covariance
     unscentedF.predict(timeTruth)
     unscentedF.update(distance)
     # return a json containing all the data
     return func.HttpResponse(json.dumps(unscentedF.x.tolist()))
-    
+
 
   except Exception as e:
     return func.HttpResponse(f"Error: {str(e)}", status_code=500)
