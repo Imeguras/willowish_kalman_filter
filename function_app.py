@@ -33,9 +33,9 @@ def http_trigger(req: func.HttpRequest) -> func.HttpResponse:
   logging.info(f"speed: {speed}")
   logging.info(f"distance: {distance}")
   logging.info(f"timeTruth: {timeTruth}")
-  speed = float(speed_incoming)
-  distance = float(distance_incoming)
-  timeTruth = float(timeTruth_incoming)
+  speed = 40
+  distance = 40
+  timeTruth = 1
   
   try:
     #
