@@ -27,15 +27,12 @@ def hx(x):
 
 @app.route(route="http_trigger")
 def http_trigger(req: func.HttpRequest) -> func.HttpResponse:
-  speed_incoming = req.params.get('speed')
-  distance_incoming = req.params.get('distance')
-  timeTruth_incoming = req.params.get('timeTruth')
-  logging.info(f"speed: {speed}")
-  logging.info(f"distance: {distance}")
-  logging.info(f"timeTruth: {timeTruth}")
-  speed = 40
-  distance = 40
-  timeTruth = 1
+  #get speed distance and timeTruth in body
+  req_body = req.get_json()
+
+  speed = req_body.get('speed')
+  distance = req_body.get('distance')
+  timeTruth = req_body.get('timeTruth')
   
   try:
     #
